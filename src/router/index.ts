@@ -294,6 +294,12 @@ export const asyncRouterMap: RouteRecordExt[] = [
         meta: { title: '编辑广告' },
         hidden: true,
       },
+      {
+        path: 'message',
+        name: 'message',
+        component: () => import('@/views/sms/message/index.vue'),
+        meta: { title: '消息管理', icon: 'sms-message' },
+      },
     ],
   },
   {
