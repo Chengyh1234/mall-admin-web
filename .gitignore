@@ -14,6 +14,15 @@ dist-ssr
 coverage
 *.local
 
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Auto generated type declarations (unplugin-auto-import / unplugin-vue-components)
+auto-imports.d.ts
+components.d.ts
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

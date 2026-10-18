@@ -18,6 +18,9 @@ router.beforeEach((to, from, next) => {
       NProgress.done()
     } else {
       if (permissionStore.addRouters.length === 0) {
+        // 刷新页面后动态路由为空，同时异步拉取最新用户信息（头像、昵称等），
+        // 避免 persist 持久化的旧快照导致右上角头像等展示滞后
+        userStore.getUserInfo().catch(() => {})
         // 登录状态下无动态路由时根据menus生成动态路由
         permissionStore.generateRoutes({
           menus: userStore.userInfo.menus,

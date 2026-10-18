@@ -6,11 +6,13 @@ import type { LoginParam, UserInfo } from '@/types/admin'
 export const useUserStore = defineStore(
   'user',
   () => {
-    // 用户信息
+    // 用户信息（注意：不存储密码，密码仅用于登录请求，不落库也不持久化）
     const userInfo = ref<UserInfo>({
       username: '',
-      password: '',
       avatar: '',
+      nickName: '',
+      email: '',
+      note: '',
       roles: [],
       token: '',
       menus: [],
@@ -22,7 +24,6 @@ export const useUserStore = defineStore(
       const tokenStr = res.data.tokenHead + res.data.token
       userInfo.value.token = tokenStr
       userInfo.value.username = loginParam.username
-      userInfo.value.password = loginParam.password
       await getUserInfo()
     }
 
@@ -37,6 +38,9 @@ export const useUserStore = defineStore(
       }
       userInfo.value.menus = res.data.menus
       userInfo.value.avatar = res.data.icon
+      userInfo.value.nickName = res.data.nickName
+      userInfo.value.email = res.data.email
+      userInfo.value.note = res.data.note
     }
 
     // 用户登出
@@ -60,7 +64,34 @@ export const useUserStore = defineStore(
     }
   },
   {
-    // 持久化配置
-    persist: true,
+    // 持久化配置：只持久化必要字段（白名单），避免敏感信息（如密码）落入 localStorage
+    // 注意：setup store 的 state 挂在 userInfo 下，pick 需带 userInfo. 前缀
+    persist: {
+      pick: [
+        'userInfo.token',
+        'userInfo.username',
+        'userInfo.avatar',
+        'userInfo.nickName',
+        'userInfo.email',
+        'userInfo.note',
+        'userInfo.roles',
+        'userInfo.menus',
+      ],
+      // 迁移清理：清除历史版本遗留的明文密码快照（一次性）
+      afterHydrate: () => {
+        const raw = localStorage.getItem('user')
+        if (raw) {
+          try {
+            const data = JSON.parse(raw)
+            if (data && data.userInfo && typeof data.userInfo.password === 'string') {
+              delete data.userInfo.password
+              localStorage.setItem('user', JSON.stringify(data))
+            }
+          } catch {
+            // 解析失败说明快照损坏，忽略即可
+          }
+        }
+      },
+    },
   },
 )

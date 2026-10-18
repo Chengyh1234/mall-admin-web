@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { dayjs, ElMessage, ElMessageBox } from 'element-plus'
-import { Search, Tickets } from '@element-plus/icons-vue'
+import { Search, Tickets, User } from '@element-plus/icons-vue'
+import SingleUpload from '@/components/Upload/singleUpload.vue'
 import { getAdminListAPI, adminRegisterAPI, adminUpdateByIdAPI, adminUpdateStatusByIdAPI, adminDeleteByIdAPI, getRoleByAdminIdAPI, adminRoleUpdateAPI } from '@/apis/admin.ts'
 import { getRoleListAllAPI } from '@/apis/role.ts'
 import type { UmsAdmin } from '@/types/admin'
@@ -55,6 +56,7 @@ onMounted(() => {
 const admin = ref<UmsAdmin>({
   username: '',
   password: '',
+  icon: '',
   status: 1
 })
 // 管理员编辑对话框是否可见
@@ -113,6 +115,7 @@ const handleAdd = () => {
   admin.value = {
     username: '',
     password: '',
+    icon: '',
     status: 1
   }
 }
@@ -249,6 +252,13 @@ const formatDateTime = (time: string) => {
         <el-table-column label="编号" width="100" align="center">
           <template #default="scope">{{ scope.row.id }}</template>
         </el-table-column>
+        <el-table-column label="头像" width="90" align="center">
+          <template #default="scope">
+            <el-avatar :size="40" :src="scope.row.icon">
+              <el-icon><User /></el-icon>
+            </el-avatar>
+          </template>
+        </el-table-column>
         <el-table-column label="帐号" align="center">
           <template #default="scope">{{ scope.row.username }}</template>
         </el-table-column>
@@ -297,6 +307,9 @@ const formatDateTime = (time: string) => {
         </el-form-item>
         <el-form-item label="姓名：">
           <el-input v-model="admin.nickName" style="width: 250px"></el-input>
+        </el-form-item>
+        <el-form-item label="头像：">
+          <SingleUpload v-model="admin.icon" />
         </el-form-item>
         <el-form-item label="邮箱：">
           <el-input v-model="admin.email" style="width: 250px"></el-input>

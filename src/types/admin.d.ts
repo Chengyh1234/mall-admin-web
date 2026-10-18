@@ -22,20 +22,30 @@ export type UserInfoResult = {
   username: string
   /** 头像 */
   icon: string
+  /** 昵称 */
+  nickName?: string
+  /** 邮箱 */
+  email?: string
+  /** 备注 */
+  note?: string
   /** 菜单 */
   menus: UmsMenu[]
   /** 角色 */
   roles: []
 }
 
-/** 用户信息（store中存储的） */
+/** 用户信息（store中存储的，不包含密码，密码不落库不持久化） */
 export type UserInfo = Pick<UserInfoResult, 'username' | 'menus' | 'roles'> & {
-  /** 密码 */
-  password: string
   /** 登录token */
   token: string
   /** 头像 */
   avatar
+  /** 昵称 */
+  nickName?: string
+  /** 邮箱 */
+  email?: string
+  /** 备注 */
+  note?: string
 }
 
 /** 管理员信息 */

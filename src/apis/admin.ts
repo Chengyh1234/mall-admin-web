@@ -79,6 +79,17 @@ export function adminUpdateStatusByIdAPI(id: number, params: { status: number })
 }
 
 /**
+ * 修改当前登录用户个人信息（头像、昵称、邮箱、备注）
+ */
+export function adminUpdateSelfAPI(data: UmsAdmin) {
+  return http({
+    url: '/admin/updateSelf',
+    method: 'post',
+    data: data,
+  })
+}
+
+/**
  * 根据ID删除用户
  */
 export function adminDeleteByIdAPI(id: number) {

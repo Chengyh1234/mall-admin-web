@@ -1,22 +1,9 @@
 # mall-admin-web
 
-<p>
-  <a href="#公众号"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E5%85%AC%E4%BC%97%E5%8F%B7-macrozheng-blue.svg" alt="公众号"></a>
-  <a href="#公众号"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E4%BA%A4%E6%B5%81-%E5%BE%AE%E4%BF%A1%E7%BE%A4-2BA245.svg" alt="交流"></a>
-  <a href="https://github.com/macrozheng/mall"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E5%90%8E%E5%8F%B0%E9%A1%B9%E7%9B%AE-mall-blue.svg" alt="后台项目"></a>
-  <a href="https://github.com/macrozheng/mall-swarm"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/Cloud%E7%89%88%E6%9C%AC-mall--swarm-brightgreen.svg" alt="SpringCloud版本"></a>
-  <a href="https://gitee.com/macrozheng/mall-admin-web"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E7%A0%81%E4%BA%91-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-orange.svg" alt="码云"></a>
-</p>
-
-## 友情提示
-
-> 1. **快速体验项目**：[在线访问地址](https://www.macrozheng.com/admin/index.html) 。
-> 2. **全套学习教程**：[《mall学习教程》](https://www.macrozheng.com) 。
-> 3. **分支说明**：`master`分支基于Vue3+Element-Plus，`dev-v2`分支基于Vue2+Element。
 
 ## 前言
 
-该项目为前后端分离项目的前端部分，后端项目`mall`地址：[传送门](https://github.com/macrozheng/mall) 。
+该项目为前后端分离项目的前端部分，后端项目`mall`地址：[传送门](https://github.com/Chengyh1234/cyh-mall) 。
 
 ## 项目介绍
 
@@ -24,9 +11,9 @@
 
 ### 项目演示
 
-项目在线演示地址：[https://www.macrozheng.com/admin/](https://www.macrozheng.com/admin/)
 
-![后台管理系统功能演示](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/project/mall_admin_show.png)
+
+![后台管理系统功能演示](https://mall-oss-cyh.oss-cn-beijing.aliyuncs.com/mall/project/mall_admin_show.png)
 
 ### 技术选型
 
@@ -69,24 +56,10 @@ src -- 源码目录
 ## 搭建步骤
 
 - 下载node并安装，支持v20以上版本（建议下载v20 LTS版本）：https://nodejs.org/zh-cn/download/archive/v20.20.0
-- 该项目为前后端分离项目，访问本地访问接口需搭建后台环境，搭建请参考后端项目[传送门](https://github.com/macrozheng/mall);
-- 访问在线接口无需搭建后台环境，只需将`.env.development`文件中的`VITE_BASE_SERVER_URL`改为[https://admin-api.macrozheng.com](https://admin-api.macrozheng.com)即可;
-- 如果你对接的是[mall-swarm](https://github.com/macrozheng/mall-swarm) 微服务后台的话，所有接口都需要通过网关访问，需要将`.env.development`文件中的`VITE_BASE_SERVER_URL`改为[http://localhost:8201/mall-admin](http://localhost:8201/mall-admin) ；
-- 克隆源代码到本地，使用VSCode打开，并完成编译;
+- 该项目为前后端分离项目，访问本地访问接口需搭建后台环境，搭建请参考后端项目[传送门](https://github.com/Chengyh1234/cyh-mall);
 - 在命令行中运行命令：`npm install`,下载相关依赖;
 - 在命令行中运行命令：`npm run dev`,运行项目;
 - 访问地址：[http://localhost:5173](http://localhost:5173)即可打开后台管理系统页面;
-- 具体部署过程请参考：[mall前端项目的安装与部署](https://www.macrozheng.com/mall/start/mall_deploy_web.html)
-- 前端自动化部署请参考：[使用Jenkins一键打包部署前端应用，就是这么6！](https://www.macrozheng.com/mall/reference/jenkins_vue.html)
 
-## 公众号
 
-加微信群交流，公众号后台回复「**加群**」即可。
 
-![公众号图片](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/qrcode_for_macrozheng_258.jpg)
-
-## 许可证
-
-[Apache License 2.0](https://github.com/macrozheng/mall-admin-web/blob/master/LICENSE)
-
-Copyright (c) 2018-2026 macrozheng
